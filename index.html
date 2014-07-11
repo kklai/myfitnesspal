@@ -1,0 +1,62 @@
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    h3 {
+      font-family: 'adelle';
+      font-size: 2em;
+      padding-left: 30px;
+    }
+    table {
+      font-size: 1em;
+      font-family: 'DIN Next LT Pro';
+      font-weight: light;
+      display: inline;
+      margin-right: 30px;
+    }
+    table td {
+      max-width: 320px;
+      overflow: hidden;
+      border-bottom: 1px dashed #ececec;
+      padding-right: 10px;
+    }
+    table tr:first-child{
+      font-size: 2em;
+    }
+    table tr td:first-child {
+      font-weight: lighter;
+      font-size: 0.8em;
+      padding-right: 5px;
+      max-width: 25px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="data.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    var types = ['Breakfast', 'Lunch', 'Dinner', 'Snacks'];
+    function buildGeneralTables() {
+      for (var i = 0; i < types.length; i++) {
+        $('body').append('<div class="' + types[i] + '"><h3>' + types[i] + '</h3></div>');
+      }
+    }
+    function buildtable(type, arr, arrname) {
+      $('.' + type).append('<table class=' + arrname + '></table>');
+      $('.' + arrname).append('<tr><td></td><td>' + arrname + '</td></tr>');
+      for (var i = 0; i < arr.length; i++) {
+        // $('.' + arrname).append('<tr><td>' + arr[i].rank + '</td><td>' + arr[i].description + '</td><td>' + arr[i].brand + '</td></tr>');
+        $('.' + arrname).append('<tr><td>' + arr[i].rank + '</td><td>' + arr[i].description + '</td></tr>');
+      }
+    }
+
+    $(document).ready(function() {
+      buildGeneralTables();
+      buildtable('breakfast', ios_breakfast, 'iOS');
+      buildtable('breakfast', android_breakfast, 'Android');
+      buildtable('breakfast', windows_breakfast, 'Windows');
+    })
+  </script>
+</body>
+</html>
